@@ -303,48 +303,58 @@
   <!-- ABOUT -->
   <section id="about" class="bg-white py-24 sm:py-32">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="max-w-4xl mx-auto text-center observe">
-        <span data-i18n="about.label" class="text-sky-600 font-semibold text-sm uppercase tracking-widest">Who we are</span>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mt-3 mb-6" data-i18n-html="about.h2">Built by practitioners,<br/>for real problems.</h2>
-        <p data-i18n="about.p1" class="text-slate-600 text-lg leading-relaxed mb-8">
-          Lightboat was founded on a simple observation: most digital transformation projects fail not because of technology, but because of disconnection — between consultants and clients, between leadership and teams, between tools and understanding.
-        </p>
-        <p data-i18n="about.p2" class="text-slate-500 leading-relaxed max-w-3xl mx-auto">
-          We're a boutique Canadian consultancy that brings senior expertise to every engagement. No junior teams, no opaque processes. Just experienced practitioners who care about outcomes and work directly with your people to make lasting change.
-        </p>
+
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <!-- Text -->
+        <div class="observe">
+          <span data-i18n="about.label" class="text-sky-600 font-semibold text-sm uppercase tracking-widest">The founder</span>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mt-3 mb-6 leading-tight" data-i18n-html="about.h2">One navigator.<br/>Clear signal.</h2>
+          <p data-i18n="about.p1" class="text-slate-600 text-lg leading-relaxed mb-6"></p>
+          <p data-i18n="about.p2" class="text-slate-500 leading-relaxed mb-8"></p>
+          <a href="#contact" class="inline-flex items-center gap-2 text-sky-600 hover:text-sky-500 font-semibold transition-colors">
+            <span data-i18n="about.cta">Let's talk</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+
+        <!-- Cards -->
+        <div class="space-y-4 observe stagger-2">
+          <div class="flex gap-5 bg-slate-50 border border-slate-200 rounded-2xl p-6">
+            <div class="w-10 h-10 bg-sky-100 text-sky-600 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <circle cx="10" cy="7" r="3"/><path d="M4 19v-1a6 6 0 0 1 12 0v1"/>
+              </svg>
+            </div>
+            <div>
+              <h4 data-i18n="about.v1.h4" class="font-bold text-slate-900 mb-1"></h4>
+              <p data-i18n="about.v1.p" class="text-slate-500 text-sm leading-relaxed"></p>
+            </div>
+          </div>
+          <div class="flex gap-5 bg-slate-50 border border-slate-200 rounded-2xl p-6">
+            <div class="w-10 h-10 bg-sky-100 text-sky-600 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+            <div>
+              <h4 data-i18n="about.v2.h4" class="font-bold text-slate-900 mb-1"></h4>
+              <p data-i18n="about.v2.p" class="text-slate-500 text-sm leading-relaxed"></p>
+            </div>
+          </div>
+          <div class="flex gap-5 bg-slate-50 border border-slate-200 rounded-2xl p-6">
+            <div class="w-10 h-10 bg-sky-100 text-sky-600 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <polyline points="18 10 10 18 2 10"/><path d="M18 4H2"/>
+              </svg>
+            </div>
+            <div>
+              <h4 data-i18n="about.v3.h4" class="font-bold text-slate-900 mb-1"></h4>
+              <p data-i18n="about.v3.p" class="text-slate-500 text-sm leading-relaxed"></p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="mt-16 grid sm:grid-cols-3 gap-8 observe stagger-2">
-        <div class="text-center px-4">
-          <div class="w-14 h-14 bg-sky-50 border border-sky-100 rounded-2xl flex items-center justify-center mx-auto mb-5">
-            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round">
-              <path d="M13 2C6.925 2 2 6.925 2 13s4.925 11 11 11 11-4.925 11-11S19.075 2 13 2z"/>
-              <path d="M13 8v5l4 2"/>
-            </svg>
-          </div>
-          <h4 data-i18n="about.v1.h4" class="font-bold text-slate-900 mb-2">Long-term thinking</h4>
-          <p data-i18n="about.v1.p" class="text-slate-500 text-sm leading-relaxed">We optimize for your 3-year success, not a short-term deliverable that creates new problems.</p>
-        </div>
-        <div class="text-center px-4">
-          <div class="w-14 h-14 bg-sky-50 border border-sky-100 rounded-2xl flex items-center justify-center mx-auto mb-5">
-            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
-          </div>
-          <h4 data-i18n="about.v2.h4" class="font-bold text-slate-900 mb-2">People-centered</h4>
-          <p data-i18n="about.v2.p" class="text-slate-500 text-sm leading-relaxed">Technology serves people. We design with your team's day-to-day reality at the center of every decision.</p>
-        </div>
-        <div class="text-center px-4">
-          <div class="w-14 h-14 bg-sky-50 border border-sky-100 rounded-2xl flex items-center justify-center mx-auto mb-5">
-            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round">
-              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-            </svg>
-          </div>
-          <h4 data-i18n="about.v3.h4" class="font-bold text-slate-900 mb-2">Measurable impact</h4>
-          <p data-i18n="about.v3.p" class="text-slate-500 text-sm leading-relaxed">Every initiative is tied to a concrete outcome. We help you define success metrics before we start, not after.</p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -568,16 +578,17 @@
         'approach.card3.p': 'Every delivery includes the "why." Your team leaves with skills and confidence, not just a working system.',
         'approach.card4.h4': 'Practical over fashionable',
         'approach.card4.p': 'We recommend tools that fit your team, not the latest hype. Sustainable beats spectacular.',
-        'about.label': 'Who we are',
-        'about.h2': 'Built by practitioners,<br/>for real problems.',
-        'about.p1': 'Lightboat was founded on a simple observation: most digital transformation projects fail not because of technology, but because of disconnection — between consultants and clients, between leadership and teams, between tools and understanding.',
-        'about.p2': "We're a boutique Canadian consultancy that brings senior expertise to every engagement. No junior teams, no opaque processes. Just experienced practitioners who care about outcomes and work directly with your people to make lasting change.",
-        'about.v1.h4': 'Long-term thinking',
-        'about.v1.p': 'We optimize for your 3-year success, not a short-term deliverable that creates new problems.',
-        'about.v2.h4': 'People-centered',
-        'about.v2.p': "Technology serves people. We design with your team's day-to-day reality at the center of every decision.",
-        'about.v3.h4': 'Measurable impact',
-        'about.v3.p': 'Every initiative is tied to a concrete outcome. We help you define success metrics before we start, not after.',
+        'about.label': 'The founder',
+        'about.h2': 'One navigator.<br/>Clear signal.',
+        'about.p1': 'Lightboat was built by a single practitioner with a single conviction: technology only creates lasting value when the people behind it truly understand it. Not a firm of dozens — one experienced engineer, fully present in every engagement.',
+        'about.p2': 'The same drive that leads a lightship into open water guides every client relationship: go where it\'s hard, stay until it\'s clear, and never leave before the team is ready to sail on their own.',
+        'about.cta': 'Let\'s talk',
+        'about.v1.h4': 'One point of contact',
+        'about.v1.p': 'You work directly with the founder — not a project manager, not a junior analyst. Senior expertise on every call.',
+        'about.v2.h4': 'Deep technical roots',
+        'about.v2.p': 'Built on years of hands-on engineering experience across systems, data, and infrastructure — not just strategy.',
+        'about.v3.h4': 'Built to be handed over',
+        'about.v3.p': 'Every solution is designed for your team to own. Documentation, training, and knowledge transfer are built into every engagement.',
         'contact.label': 'Get started',
         'contact.h2': 'Ready to move forward?',
         'contact.p': "Tell us where you are and where you want to go. We'll set up a free discovery call to see how we can help.",
@@ -666,16 +677,17 @@
         'approach.card3.p': 'Chaque livraison inclut le « pourquoi ». Votre équipe repart avec des compétences et de la confiance, pas seulement un système fonctionnel.',
         'approach.card4.h4': 'Pratique plutôt que tendance',
         'approach.card4.p': "Nous recommandons des outils adaptés à votre équipe, pas les dernières tendances. Le durable l'emporte sur le spectaculaire.",
-        'about.label': 'Qui nous sommes',
-        'about.h2': 'Bâti par des praticiens,<br/>pour de vrais problèmes.',
-        'about.p1': "Lightboat a été fondé sur une observation simple : la plupart des projets de transformation numérique échouent non pas à cause de la technologie, mais à cause d'une déconnexion — entre consultants et clients, entre direction et équipes, entre outils et compréhension.",
-        'about.p2': "Nous sommes une firme-conseil canadienne de boutique qui apporte une expertise senior à chaque mandat. Pas d'équipes juniors, pas de processus opaques. Juste des praticiens expérimentés qui se soucient des résultats et travaillent directement avec vos équipes pour créer un changement durable.",
-        'about.v1.h4': 'Vision à long terme',
-        'about.v1.p': 'Nous optimisons pour votre succès à 3 ans, pas pour un livrable à court terme qui crée de nouveaux problèmes.',
-        'about.v2.h4': 'Centré sur les personnes',
-        'about.v2.p': "La technologie sert les personnes. Nous concevons avec la réalité quotidienne de votre équipe au centre de chaque décision.",
-        'about.v3.h4': 'Impact mesurable',
-        'about.v3.p': "Chaque initiative est liée à un résultat concret. Nous vous aidons à définir les indicateurs de succès avant de commencer, pas après.",
+        'about.label': 'Le fondateur',
+        'about.h2': 'Un navigateur.<br/>Un signal clair.',
+        'about.p1': "Lightboat a été bâti par un seul praticien, animé d'une seule conviction : la technologie ne crée une valeur durable que lorsque les personnes derrière elle la comprennent vraiment. Pas une firme de dizaines — un ingénieur expérimenté, pleinement présent dans chaque mandat.",
+        'about.p2': "Le même élan qui pousse un bateau-phare en pleine mer guide chaque relation client : aller là où c'est difficile, rester jusqu'à ce que ce soit clair, ne jamais partir avant que l'équipe soit prête à naviguer seule.",
+        'about.cta': 'Parlons-en',
+        'about.v1.h4': 'Un seul interlocuteur',
+        'about.v1.p': "Vous travaillez directement avec le fondateur — pas un chef de projet, pas un analyste junior. Une expertise senior à chaque échange.",
+        'about.v2.h4': 'Racines techniques profondes',
+        'about.v2.p': "Fondé sur des années d'expérience pratique en ingénierie — systèmes, données, infrastructure — pas seulement de la stratégie.",
+        'about.v3.h4': 'Conçu pour être transmis',
+        'about.v3.p': "Chaque solution est pensée pour que votre équipe puisse se l'approprier. Documentation, formation et transfert de connaissances sont inclus dans chaque mandat.",
         'contact.label': 'Commençons',
         'contact.h2': 'Prêt à passer à l\'action ?',
         'contact.p': "Dites-nous où vous en êtes et où vous voulez aller. Nous organiserons un appel de découverte gratuit pour voir comment nous pouvons vous aider.",
