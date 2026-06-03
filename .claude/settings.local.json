@@ -10,7 +10,8 @@
       "Bash(ssh-keyscan github.com)",
       "Bash(git add *)",
       "Bash(git commit *)",
-      "Bash(convert /home/damien/lightboat-website/ressource/ceo.JPG -resize 600x600^ -gravity center -extent 600x600 -quality 82 /home/damien/lightboat-website/ressource/ceo.jpg)"
+      "Bash(convert /home/damien/lightboat-website/ressource/ceo.JPG -resize 600x600^ -gravity center -extent 600x600 -quality 82 /home/damien/lightboat-website/ressource/ceo.jpg)",
+      "Bash(python3 *)"
     ]
   }
 }
