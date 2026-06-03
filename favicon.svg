@@ -1,22 +1,17 @@
-<svg viewBox="0 0 50 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Rayons gauche -->
-  <line x1="23" y1="5" x2="5"  y2="0"  stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="22" y1="5" x2="1"  y2="5"  stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="22" y1="6" x2="2"  y2="12" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="23" y1="7" x2="7"  y2="16" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
-  <!-- Rayons droite -->
-  <line x1="27" y1="5" x2="45" y2="0"  stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="28" y1="5" x2="49" y2="5"  stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="28" y1="6" x2="48" y2="12" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="27" y1="7" x2="43" y2="16" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
-  <!-- Chapeau lanterne -->
-  <rect x="20" y="1" width="10" height="5" rx="1" stroke="#38bdf8" stroke-width="1.5" fill="none"/>
-  <!-- Tour phare -->
-  <path d="M22 6 L21 22 L29 22 L28 6 Z" stroke="#38bdf8" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
-  <!-- Pont -->
-  <line x1="7" y1="22" x2="43" y2="22" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
-  <!-- Coque -->
-  <path d="M7 22 Q25 33 43 22" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-  <!-- Vagues -->
-  <path d="M3 38 Q8 35 13 38 Q18 41 23 38 Q28 35 33 38 Q38 41 43 38 Q47 35 49 37" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+<svg viewBox="-2 -4 54 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <line x1="24" y1="5" x2="2"  y2="-1" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="23" y1="5" x2="0"  y2="5"  stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="23" y1="6" x2="0"  y2="12" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="24" y1="7" x2="4"  y2="17" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="25" y1="5" x2="25" y2="-2" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="26" y1="5" x2="48" y2="-1" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="27" y1="5" x2="50" y2="5"  stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="27" y1="6" x2="50" y2="12" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="26" y1="7" x2="46" y2="17" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/>
+  <rect x="19" y="2" width="12" height="5" rx="1" stroke="#38bdf8" stroke-width="1.5" fill="none"/>
+  <path d="M21 7 L20 23 L30 23 L29 7 Z" stroke="#38bdf8" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+  <line x1="6" y1="23" x2="44" y2="23" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M6 23 C8 27 14 33 25 35 C36 33 42 27 44 23" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  <path d="M2 40 C6 37 10 43 14 40 C18 37 22 43 26 40 C30 37 34 43 38 40 C42 37 46 41 49 40" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  <path d="M0 44 C5 41 9 46 14 44 C19 41 23 46 28 44 C33 41 37 46 42 44 C46 42 49 44 50 44" stroke="#38bdf8" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.4"/>
 </svg>
