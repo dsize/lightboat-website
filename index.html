@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lightboat — Digital Transformation Consulting</title>
+  <meta name="description" content="Lightboat helps companies navigate digital transformation — from legacy tech debt to modern cloud services, automation, and data platforms." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
+          colors: {
+            navy:  { 50:'#f0f4ff', 100:'#e0eaff', 200:'#c2d4ff', 300:'#94b0ff', 400:'#6485ff', 500:'#3a5bff', 600:'#1e3aff', 700:'#1630e6', 800:'#1428b8', 900:'#162591', DEFAULT:'#1e3aff' },
+            slate: { 50:'#f8fafc', 100:'#f1f5f9', 200:'#e2e8f0', 300:'#cbd5e1', 400:'#94a3b8', 500:'#64748b', 600:'#475569', 700:'#334155', 800:'#1e293b', 900:'#0f172a' },
+            accent:{ 400:'#38bdf8', 500:'#0ea5e9', 600:'#0284c7' },
+          },
+          keyframes: {
+            fadeUp: { '0%': { opacity:'0', transform:'translateY(24px)' }, '100%': { opacity:'1', transform:'translateY(0)' } },
+            fadeIn: { '0%': { opacity:'0' }, '100%': { opacity:'1' } },
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.6s ease-out forwards',
+            'fade-in': 'fadeIn 0.5s ease-out forwards',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .gradient-hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #162564 100%); }
+    .service-card:hover { transform: translateY(-4px); }
+    .service-card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+    .service-card:hover .service-icon { background-color: #0ea5e9; color: white; }
+    .service-icon { transition: background-color 0.25s ease, color 0.25s ease; }
+    .nav-link { position: relative; }
+    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:#38bdf8; transition:width 0.25s ease; }
+    .nav-link:hover::after { width:100%; }
+    .observe { opacity:0; transform:translateY(20px); transition:opacity 0.6s ease, transform 0.6s ease; }
+    .observe.visible { opacity:1; transform:translateY(0); }
+    .stagger-1 { transition-delay:0.1s; }
+    .stagger-2 { transition-delay:0.2s; }
+    .stagger-3 { transition-delay:0.3s; }
+    .stagger-4 { transition-delay:0.4s; }
+    .lang-btn.active { background:rgba(56,189,248,0.2); color:#38bdf8; }
+    .lang-btn { color: rgba(255,255,255,0.55); }
+    .lang-btn:hover:not(.active) { color: rgba(255,255,255,0.9); }
+    @media (max-width:640px) { .hero-title { font-size:clamp(2rem,7vw,3.5rem); } }
+  </style>
+</head>
+<body class="font-sans bg-slate-50 text-slate-800 antialiased">
+
+  <!-- NAV -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background:transparent">
+    <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
+      <a href="#top" class="flex items-center gap-2.5 group">
+        <svg viewBox="0 0 40 46" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:34px;width:auto" class="flex-shrink-0">
+          <path d="M18 6 L1 1 L0 13 Z" fill="#38bdf8" opacity="0.18"/>
+          <line x1="18" y1="5" x2="2" y2="0" stroke="#38bdf8" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="17" y1="7" x2="0" y2="7" stroke="#38bdf8" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="18" y1="9" x2="2" y2="13" stroke="#38bdf8" stroke-width="1.6" stroke-linecap="round"/>
+          <rect x="14" y="2.5" width="12" height="7" rx="2" fill="#38bdf8"/>
+          <circle cx="20" cy="6" r="2.2" fill="white" opacity="0.95"/>
+          <rect x="18" y="9.5" width="4" height="17" rx="1" fill="#38bdf8"/>
+          <rect x="7" y="26.5" width="26" height="2.5" rx="1.25" fill="#38bdf8"/>
+          <path d="M7 29 Q20 39 33 29" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M2 41 Q7 38 12 41 Q17 44 22 41 Q27 38 32 41 Q37 44 38 41" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+        </svg>
+        <span class="font-bold text-xl tracking-tight text-white group-hover:text-sky-300 transition-colors">Lightboat</span>
+      </a>
+      <div class="hidden md:flex items-center gap-7">
+        <a href="#services" data-i18n="nav.services" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Services</a>
+        <a href="#approach" data-i18n="nav.approach" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Approach</a>
+        <a href="#about" data-i18n="nav.about" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">About</a>
+        <!-- Language toggle -->
+        <div class="flex items-center bg-white/8 border border-white/15 rounded-full p-0.5 text-xs font-bold" aria-label="Language switcher">
+          <button id="lang-en-btn" onclick="setLang('en')" class="lang-btn active px-3 py-1 rounded-full transition-all">EN</button>
+          <button id="lang-fr-btn" onclick="setLang('fr')" class="lang-btn px-3 py-1 rounded-full transition-all">FR</button>
+        </div>
+        <a href="#contact" data-i18n="nav.cta" class="text-sm font-semibold bg-sky-500 hover:bg-sky-400 text-white px-5 py-2 rounded-full transition-colors">Get in touch</a>
+      </div>
+      <button id="menu-btn" class="md:hidden text-white p-2" aria-label="Menu">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="2" y1="6" x2="20" y2="6"/><line x1="2" y1="11" x2="20" y2="11"/><line x1="2" y1="16" x2="20" y2="16"/>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-6 py-4 space-y-3">
+      <a href="#services" data-i18n="nav.services" class="block text-sm font-medium text-slate-300 hover:text-white py-1">Services</a>
+      <a href="#approach" data-i18n="nav.approach" class="block text-sm font-medium text-slate-300 hover:text-white py-1">Approach</a>
+      <a href="#about" data-i18n="nav.about" class="block text-sm font-medium text-slate-300 hover:text-white py-1">About</a>
+      <a href="#contact" data-i18n="nav.cta.mobile" class="block text-sm font-semibold text-sky-400 hover:text-sky-300 py-1">Get in touch →</a>
+      <div class="pt-2 border-t border-slate-800 flex items-center gap-2">
+        <span class="text-xs text-slate-500 mr-1">Lang:</span>
+        <button onclick="setLang('en')" id="lang-en-mob" class="lang-btn active text-xs font-bold px-3 py-1 rounded-full border border-white/15 transition-all">EN</button>
+        <button onclick="setLang('fr')" id="lang-fr-mob" class="lang-btn text-xs font-bold px-3 py-1 rounded-full border border-white/15 transition-all">FR</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="top" class="gradient-hero min-h-screen flex items-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.04]" style="background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:60px 60px"></div>
+    <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-sky-600 rounded-full opacity-10 blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-1/4 left-1/3 w-64 h-64 bg-blue-700 rounded-full opacity-10 blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto px-6 pt-24 pb-20 relative z-10">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/25 text-sky-300 text-xs font-semibold px-4 py-1.5 rounded-full mb-8 tracking-wide uppercase">
+          <span class="w-1.5 h-1.5 bg-sky-400 rounded-full animate-pulse"></span>
+          <span data-i18n="hero.badge">Digital Transformation Consulting</span>
+        </div>
+        <h1 class="hero-title font-extrabold text-5xl sm:text-6xl lg:text-7xl leading-[1.08] text-white mb-6" data-i18n-html="hero.h1">
+          Navigate your<br/>
+          <span class="text-transparent bg-clip-text" style="background-image:linear-gradient(90deg,#38bdf8,#818cf8)">digital future</span><br/>
+          with confidence.
+        </h1>
+        <p data-i18n="hero.p" class="text-lg sm:text-xl text-slate-300 leading-relaxed mb-10 max-w-2xl">
+          Lightboat guides businesses through modernization — turning legacy tech debt into competitive advantage through cloud migration, automation, and data-driven operations. We stay with you every step of the way.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-400 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-sky-500/25 text-base">
+            <span data-i18n="hero.cta1">Start your transformation</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+          <a href="#services" class="inline-flex items-center justify-center gap-2 bg-white/8 hover:bg-white/12 border border-white/15 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 text-base backdrop-blur-sm">
+            <span data-i18n="hero.cta2">See our services</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Stats row -->
+      <div class="mt-20 grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-2xl">
+        <div class="border-l-2 border-sky-500 pl-5">
+          <div data-i18n="hero.stat1.value" class="text-3xl font-extrabold text-white">100%</div>
+          <div data-i18n="hero.stat1.label" class="text-sm text-slate-400 mt-1">Hands-on delivery</div>
+        </div>
+        <div class="border-l-2 border-sky-500 pl-5">
+          <div data-i18n="hero.stat2.value" class="text-3xl font-extrabold text-white">End-to-end</div>
+          <div data-i18n="hero.stat2.label" class="text-sm text-slate-400 mt-1">Strategy to production</div>
+        </div>
+        <div class="border-l-2 border-sky-500 pl-5 col-span-2 sm:col-span-1">
+          <div data-i18n="hero.stat3.value" class="text-3xl font-extrabold text-white">Built-in</div>
+          <div data-i18n="hero.stat3.label" class="text-sm text-slate-400 mt-1">Team knowledge transfer</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-500 animate-bounce">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M10 4v12M5 11l5 5 5-5"/></svg>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="bg-white py-24 sm:py-32">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16 observe">
+        <span data-i18n="services.label" class="text-sky-600 font-semibold text-sm uppercase tracking-widest">What we do</span>
+        <h2 data-i18n="services.h2" class="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mt-3 mb-5">Four pillars of transformation</h2>
+        <p data-i18n="services.p" class="text-slate-500 text-lg max-w-2xl mx-auto">Whether you're dealing with legacy systems, manual processes, or siloed data, we have a path forward.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-8">
+
+        <!-- Service 1 -->
+        <div class="service-card observe stagger-1 bg-slate-50 border border-slate-200 rounded-2xl p-8 hover:border-sky-200 hover:shadow-xl hover:shadow-slate-100">
+          <div class="service-icon w-12 h-12 bg-sky-100 text-sky-600 rounded-xl flex items-center justify-center mb-6">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3 data-i18n="s1.h3" class="text-xl font-bold text-slate-900 mb-3">Tech Debt & Modernization</h3>
+          <p data-i18n="s1.p" class="text-slate-600 leading-relaxed mb-5">We audit your existing systems, identify bottlenecks, and build a realistic roadmap to replace or refactor legacy infrastructure — without disrupting operations.</p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-sm text-slate-500"><span class="text-sky-500 mt-0.5">✓</span><span data-i18n="s1.li1">Legacy system audit & risk mapping</span></li>
+            <li class="flex items-start gap-2 text-sm text-slate-500"><span class="text-sky-500 mt-0.5">✓</span><span data-i18n="s1.li2">Incremental migration strategy</span></li>
+            <li class="flex items-start gap-2 text-sm text-slate-500"><span class="text-sky-500 mt-0.5">✓</span><span data-i18n="s1.li3">Zero-downtime transition plans</span></li>
+          </ul>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-card observe stagger-2 bg-slate-50 border border-slate-200 rounded-2xl p-8 hover:border-sky-200 hover:shadow-xl hover:shadow-slate-100">
+          <div class="service-icon w-12 h-12 bg-sky-100 text-sky-600 rounded-xl flex items-center justify-center mb-6">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M6 7h.01M9 7h6"/>
+            </svg>
+          </div>
+          <h3 data-i18n="s2.h3" class="text-xl font-bold text-slate-900 mb-3">Cloud & Web Migration</h3>
+          <p data-i18n="s2.p" class="text-slate-600 leading-relaxed mb-5">Move from on-premise or outdated hosting to scalable, secure modern cloud services. We handle architecture design, migration execution, and team onboarding.</p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-sm text-slate-500"><span class="text-sky-500 mt-0.5">✓</span><span data-i18n="s2.li1">Cloud architecture design</span></li>
+            <li class="flex items-start gap-2 text-sm text-slate-500"><span class="text-sky-500 mt-0.5">✓</span><span data-i18n="s2.li2">Service selection & vendor guidance</span></li>
+            <li class="flex items-start gap-2 text-sm text-slate-500"><span class="text-sky-500 mt-0.5">✓</span><span data-i18n="s2.li3">Secure deployment & monitoring setup</span></li>
+          </ul>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-card observe stagger-3 bg-slate-50 border border-slate-200 rounded-2xl p-8 hover:border-sky-200 hover:shadow-xl hover:shadow-slate-100">
+          <div class="service-icon w-12 h-12 bg-sky-100 text-sky-600 rounded-xl flex items-center justify-center mb-6">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3 data-i18n="s3.h3" class="text-xl font-bold text-slate-900 mb-3">Process Automation</h3>
+          <p data-i18n="s3.p" class="text-slate-600 leading-relaxed mb-5">Eliminate manual, repetitive work through targeted automation — with or without AI. We identify the highest-value opportunities and implement reliable, maintainable solutions.</p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-sm text-slate-500"><span class="text-sky-500 mt-0.5">✓</span><span data-i18n="s3.li1">Workflow & pipeline automation</span></li>
+            <li class="flex items-start gap-2 text-sm text-slate-500"><span class="text-sky-500 mt-0.5">✓</span><span data-i18n="s3.li2">AI-assisted process acceleration</span></li>
+            <li class="flex items-start gap-2 text-sm text-slate-500"><span class="text-sky-500 mt-0.5">✓</span><span data-i18n="s3.li3">Integration between business tools</span></li>
+          </ul>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="service-card observe stagger-4 bg-slate-50 border border-slate-200 rounded-2xl p-8 hover:border-sky-200 hover:shadow-xl hover:shadow-slate-100">
+          <div class="service-icon w-12 h-12 bg-sky-100 text-sky-600 rounded-xl flex items-center justify-center mb-6">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/>
+              <path d="M18 14v3m0 3v.01M14 17.5h3"/>
+            </svg>
+          </div>
+          <h3 data-i18n="s4.h3" class="text-xl font-bold text-slate-900 mb-3">Data Platforms & Analytics</h3>
+          <p data-i18n="s4.p" class="text-slate-600 leading-relaxed mb-5">Build a data foundation your team can actually use. From centralized data pipelines to business intelligence dashboards, we set up scalable platforms using tools your team already understands.</p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-sm text-slate-500"><span class="text-sky-500 mt-0.5">✓</span><span data-i18n="s4.li1">Data pipeline & warehouse setup</span></li>
+            <li class="flex items-start gap-2 text-sm text-slate-500"><span class="text-sky-500 mt-0.5">✓</span><span data-i18n="s4.li2">BI dashboards & reporting tools</span></li>
+            <li class="flex items-start gap-2 text-sm text-slate-500"><span class="text-sky-500 mt-0.5">✓</span><span data-i18n="s4.li3">Business analytics enablement</span></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section id="approach" class="bg-slate-900 py-24 sm:py-32 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image:radial-gradient(circle,#fff 1px,transparent 1px);background-size:30px 30px"></div>
+    <div class="absolute top-0 right-0 w-1/2 h-full opacity-5" style="background:radial-gradient(ellipse at 80% 50%,#38bdf8,transparent 70%)"></div>
+
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="observe">
+          <span data-i18n="approach.label" class="text-sky-400 font-semibold text-sm uppercase tracking-widest">Our approach</span>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-3 mb-6 leading-tight" data-i18n-html="approach.h2">
+            We don't just deliver.<br/><span class="text-sky-400">We transfer.</span>
+          </h2>
+          <p data-i18n="approach.p1" class="text-slate-300 text-lg leading-relaxed mb-8">
+            Most consultants hand over a finished system and leave. Lightboat stays alongside your team — explaining decisions, building internal knowledge, and making sure your people can own what we build together.
+          </p>
+          <p data-i18n="approach.p2" class="text-slate-400 leading-relaxed">
+            We believe technology only creates lasting value when the people using it understand it. That's why every engagement includes structured knowledge transfer and honest education, not just a handoff document.
+          </p>
+        </div>
+
+        <div class="space-y-5 observe stagger-2">
+          <div class="flex gap-5 bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/8 transition-colors">
+            <div class="w-10 h-10 bg-sky-500/20 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"><path d="M10 2L2 6l8 4 8-4-8-4zM2 14l8 4 8-4M2 10l8 4 8-4"/></svg>
+            </div>
+            <div>
+              <h4 data-i18n="approach.card1.h4" class="font-semibold text-white mb-1">Accompagnement réel</h4>
+              <p data-i18n="approach.card1.p" class="text-slate-400 text-sm leading-relaxed">We embed with your team, not just consult from a distance. Slack, stand-ups, code reviews — we're part of the process.</p>
+            </div>
+          </div>
+          <div class="flex gap-5 bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/8 transition-colors">
+            <div class="w-10 h-10 bg-sky-500/20 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="8"/><path d="M10 6v4l3 2"/></svg>
+            </div>
+            <div>
+              <h4 data-i18n="approach.card2.h4" class="font-semibold text-white mb-1">Honest timelines</h4>
+              <p data-i18n="approach.card2.p" class="text-slate-400 text-sm leading-relaxed">No surprises. We plan carefully, communicate early, and adjust together when things change.</p>
+            </div>
+          </div>
+          <div class="flex gap-5 bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/8 transition-colors">
+            <div class="w-10 h-10 bg-sky-500/20 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"><path d="M9 10l2 2 4-4"/><rect x="3" y="3" width="14" height="14" rx="2"/></svg>
+            </div>
+            <div>
+              <h4 data-i18n="approach.card3.h4" class="font-semibold text-white mb-1">Education first</h4>
+              <p data-i18n="approach.card3.p" class="text-slate-400 text-sm leading-relaxed">Every delivery includes the "why." Your team leaves with skills and confidence, not just a working system.</p>
+            </div>
+          </div>
+          <div class="flex gap-5 bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/8 transition-colors">
+            <div class="w-10 h-10 bg-sky-500/20 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="3"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.93 4.93l1.41 1.41M13.66 13.66l1.41 1.41M4.93 15.07l1.41-1.41M13.66 6.34l1.41-1.41"/></svg>
+            </div>
+            <div>
+              <h4 data-i18n="approach.card4.h4" class="font-semibold text-white mb-1">Practical over fashionable</h4>
+              <p data-i18n="approach.card4.p" class="text-slate-400 text-sm leading-relaxed">We recommend tools that fit your team, not the latest hype. Sustainable beats spectacular.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="bg-white py-24 sm:py-32">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-4xl mx-auto text-center observe">
+        <span data-i18n="about.label" class="text-sky-600 font-semibold text-sm uppercase tracking-widest">Who we are</span>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mt-3 mb-6" data-i18n-html="about.h2">Built by practitioners,<br/>for real problems.</h2>
+        <p data-i18n="about.p1" class="text-slate-600 text-lg leading-relaxed mb-8">
+          Lightboat was founded on a simple observation: most digital transformation projects fail not because of technology, but because of disconnection — between consultants and clients, between leadership and teams, between tools and understanding.
+        </p>
+        <p data-i18n="about.p2" class="text-slate-500 leading-relaxed max-w-3xl mx-auto">
+          We're a boutique Canadian consultancy that brings senior expertise to every engagement. No junior teams, no opaque processes. Just experienced practitioners who care about outcomes and work directly with your people to make lasting change.
+        </p>
+      </div>
+
+      <div class="mt-16 grid sm:grid-cols-3 gap-8 observe stagger-2">
+        <div class="text-center px-4">
+          <div class="w-14 h-14 bg-sky-50 border border-sky-100 rounded-2xl flex items-center justify-center mx-auto mb-5">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round">
+              <path d="M13 2C6.925 2 2 6.925 2 13s4.925 11 11 11 11-4.925 11-11S19.075 2 13 2z"/>
+              <path d="M13 8v5l4 2"/>
+            </svg>
+          </div>
+          <h4 data-i18n="about.v1.h4" class="font-bold text-slate-900 mb-2">Long-term thinking</h4>
+          <p data-i18n="about.v1.p" class="text-slate-500 text-sm leading-relaxed">We optimize for your 3-year success, not a short-term deliverable that creates new problems.</p>
+        </div>
+        <div class="text-center px-4">
+          <div class="w-14 h-14 bg-sky-50 border border-sky-100 rounded-2xl flex items-center justify-center mx-auto mb-5">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h4 data-i18n="about.v2.h4" class="font-bold text-slate-900 mb-2">People-centered</h4>
+          <p data-i18n="about.v2.p" class="text-slate-500 text-sm leading-relaxed">Technology serves people. We design with your team's day-to-day reality at the center of every decision.</p>
+        </div>
+        <div class="text-center px-4">
+          <div class="w-14 h-14 bg-sky-50 border border-sky-100 rounded-2xl flex items-center justify-center mx-auto mb-5">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+          <h4 data-i18n="about.v3.h4" class="font-bold text-slate-900 mb-2">Measurable impact</h4>
+          <p data-i18n="about.v3.p" class="text-slate-500 text-sm leading-relaxed">Every initiative is tied to a concrete outcome. We help you define success metrics before we start, not after.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHIE / SYMBOLE -->
+  <section id="philosophie" class="bg-slate-950 py-24 sm:py-32 relative overflow-hidden">
+    <!-- Decorative wave lines -->
+    <div class="absolute inset-0 pointer-events-none" style="opacity:0.05">
+      <svg viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" class="w-full h-full" fill="none" stroke="white" stroke-width="1.5">
+        <path d="M-100 180 C150 120, 350 240, 600 180 S1050 120, 1300 180"/>
+        <path d="M-100 230 C150 170, 350 290, 600 230 S1050 170, 1300 230"/>
+        <path d="M-100 280 C150 220, 350 340, 600 280 S1050 220, 1300 280"/>
+        <path d="M-100 330 C150 270, 350 390, 600 330 S1050 270, 1300 330"/>
+        <path d="M-100 380 C150 320, 350 440, 600 380 S1050 320, 1300 380"/>
+      </svg>
+    </div>
+    <!-- Glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[200px] bg-sky-500 rounded-full opacity-[0.07] blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-3xl mx-auto px-6 text-center relative z-10">
+      <!-- Big logo -->
+      <div class="flex justify-center mb-10 observe">
+        <svg viewBox="0 0 40 46" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:88px;width:auto">
+          <path d="M18 6 L1 1 L0 13 Z" fill="#38bdf8" opacity="0.2"/>
+          <line x1="18" y1="5" x2="2" y2="0" stroke="#38bdf8" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="17" y1="7" x2="0" y2="7" stroke="#38bdf8" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="18" y1="9" x2="2" y2="13" stroke="#38bdf8" stroke-width="1.6" stroke-linecap="round"/>
+          <rect x="14" y="2.5" width="12" height="7" rx="2" fill="#38bdf8"/>
+          <circle cx="20" cy="6" r="2.2" fill="white" opacity="0.95"/>
+          <rect x="18" y="9.5" width="4" height="17" rx="1" fill="#38bdf8"/>
+          <rect x="7" y="26.5" width="26" height="2.5" rx="1.25" fill="#38bdf8"/>
+          <path d="M7 29 Q20 39 33 29" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M2 41 Q7 38 12 41 Q17 44 22 41 Q27 38 32 41 Q37 44 38 41" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.55"/>
+          <path d="M5 45 Q10 43 15 45 Q20 47 25 45 Q30 43 35 45" stroke="#38bdf8" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.25"/>
+        </svg>
+      </div>
+
+      <div class="observe stagger-1">
+        <span data-i18n="symbol.label" class="text-sky-400 font-semibold text-sm uppercase tracking-widest">Notre symbole</span>
+        <h2 data-i18n="symbol.h2" class="text-3xl sm:text-4xl font-bold text-white mt-3 mb-8">Le bateau-phare</h2>
+      </div>
+
+      <blockquote class="observe stagger-2 text-xl sm:text-2xl text-sky-200 font-medium leading-relaxed mb-10 italic border-l-2 border-sky-500 pl-6 text-left">
+        <span data-i18n="symbol.quote">"Il n'attend pas à l'abri du port. Il prend la mer."</span>
+      </blockquote>
+
+      <div class="space-y-5 text-left observe stagger-3">
+        <p data-i18n="symbol.p1" class="text-slate-300 text-lg leading-relaxed"></p>
+        <p data-i18n="symbol.p2" class="text-slate-400 leading-relaxed"></p>
+      </div>
+
+      <!-- Three pillars of the metaphor -->
+      <div class="mt-14 grid sm:grid-cols-3 gap-6 observe stagger-4">
+        <div class="bg-white/4 border border-white/8 rounded-2xl p-6">
+          <div class="text-3xl mb-3">⚓</div>
+          <h4 data-i18n="symbol.v1.h4" class="font-semibold text-white mb-2 text-sm"></h4>
+          <p data-i18n="symbol.v1.p" class="text-slate-500 text-xs leading-relaxed"></p>
+        </div>
+        <div class="bg-white/4 border border-white/8 rounded-2xl p-6">
+          <div class="text-3xl mb-3">🌊</div>
+          <h4 data-i18n="symbol.v2.h4" class="font-semibold text-white mb-2 text-sm"></h4>
+          <p data-i18n="symbol.v2.p" class="text-slate-500 text-xs leading-relaxed"></p>
+        </div>
+        <div class="bg-white/4 border border-white/8 rounded-2xl p-6">
+          <div class="text-3xl mb-3">💡</div>
+          <h4 data-i18n="symbol.v3.h4" class="font-semibold text-white mb-2 text-sm"></h4>
+          <p data-i18n="symbol.v3.p" class="text-slate-500 text-xs leading-relaxed"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="relative py-24 sm:py-32 overflow-hidden" style="background:linear-gradient(135deg,#0f172a 0%,#162564 60%,#0c1a3d 100%)">
+    <div class="absolute inset-0 opacity-[0.04]" style="background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:60px 60px"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-sky-600 rounded-full opacity-10 blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-12 observe">
+        <span data-i18n="contact.label" class="text-sky-400 font-semibold text-sm uppercase tracking-widest">Get started</span>
+        <h2 data-i18n="contact.h2" class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-3 mb-5">Ready to move forward?</h2>
+        <p data-i18n="contact.p" class="text-slate-300 text-lg max-w-2xl mx-auto">Tell us where you are and where you want to go. We'll set up a free discovery call to see how we can help.</p>
+      </div>
+
+      <form id="contact-form" class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-3xl p-8 sm:p-10 observe stagger-2" onsubmit="handleSubmit(event)">
+        <div class="grid sm:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label data-i18n="form.name.label" class="block text-sm font-medium text-slate-300 mb-2">Name</label>
+            <input type="text" name="name" required data-i18n-placeholder="form.name.placeholder" placeholder="Your name"
+              class="w-full bg-white/8 border border-white/15 text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all" />
+          </div>
+          <div>
+            <label data-i18n="form.email.label" class="block text-sm font-medium text-slate-300 mb-2">Email</label>
+            <input type="email" name="email" required data-i18n-placeholder="form.email.placeholder" placeholder="you@company.com"
+              class="w-full bg-white/8 border border-white/15 text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all" />
+          </div>
+        </div>
+        <div class="mb-6">
+          <label data-i18n="form.company.label" class="block text-sm font-medium text-slate-300 mb-2">Company / Organization</label>
+          <input type="text" name="company" data-i18n-placeholder="form.company.placeholder" placeholder="Your company (optional)"
+            class="w-full bg-white/8 border border-white/15 text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all" />
+        </div>
+        <div class="mb-6">
+          <label data-i18n="form.message.label" class="block text-sm font-medium text-slate-300 mb-2">What are you looking to accomplish?</label>
+          <textarea name="message" rows="4" required data-i18n-placeholder="form.message.placeholder" placeholder="Describe your current challenges or goals..."
+            class="w-full bg-white/8 border border-white/15 text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all resize-none"></textarea>
+        </div>
+        <div class="mb-8">
+          <label data-i18n="form.interests.label" class="block text-sm font-medium text-slate-300 mb-3">What are you most interested in?</label>
+          <div class="flex flex-wrap gap-2.5">
+            <label class="interest-tag cursor-pointer"><input type="checkbox" name="interest" value="tech-debt" class="sr-only"><span data-i18n="form.tag.techdebt" class="text-xs font-medium border border-white/20 text-slate-300 rounded-full px-4 py-1.5 hover:border-sky-400 hover:text-sky-300 transition-all select-none block">Tech debt & modernization</span></label>
+            <label class="interest-tag cursor-pointer"><input type="checkbox" name="interest" value="migration" class="sr-only"><span data-i18n="form.tag.migration" class="text-xs font-medium border border-white/20 text-slate-300 rounded-full px-4 py-1.5 hover:border-sky-400 hover:text-sky-300 transition-all select-none block">Cloud migration</span></label>
+            <label class="interest-tag cursor-pointer"><input type="checkbox" name="interest" value="automation" class="sr-only"><span data-i18n="form.tag.automation" class="text-xs font-medium border border-white/20 text-slate-300 rounded-full px-4 py-1.5 hover:border-sky-400 hover:text-sky-300 transition-all select-none block">Process automation</span></label>
+            <label class="interest-tag cursor-pointer"><input type="checkbox" name="interest" value="data" class="sr-only"><span data-i18n="form.tag.data" class="text-xs font-medium border border-white/20 text-slate-300 rounded-full px-4 py-1.5 hover:border-sky-400 hover:text-sky-300 transition-all select-none block">Data & analytics</span></label>
+          </div>
+        </div>
+        <button type="submit" id="submit-btn" class="w-full bg-sky-500 hover:bg-sky-400 text-white font-semibold py-4 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-sky-500/25 text-base">
+          <span data-i18n="form.submit">Send message</span>
+        </button>
+        <div id="form-success" class="hidden mt-4 text-center text-sm text-sky-300 font-medium">
+          <span data-i18n="form.success">✓ Message sent! We'll be in touch within one business day.</span>
+        </div>
+        <div id="form-error" class="hidden mt-4 text-center text-sm text-red-400 font-medium">
+          <span data-i18n="form.error">Something went wrong. Please try again or email us directly.</span>
+        </div>
+      </form>
+
+      <div class="mt-10 text-center observe stagger-3">
+        <p data-i18n="contact.direct" class="text-slate-400 text-sm mb-4">Prefer a direct line?</p>
+        <a href="mailto:hello@lightboat.ca" class="inline-flex items-center gap-2 text-sky-400 hover:text-sky-300 font-medium transition-colors">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M2 5l6 4 6-4"/></svg>
+          hello@lightboat.ca
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-950 py-10 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2.5">
+        <svg viewBox="0 0 40 46" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:28px;width:auto" opacity="0.55">
+          <path d="M18 6 L1 1 L0 13 Z" fill="#38bdf8" opacity="0.18"/>
+          <line x1="18" y1="5" x2="2" y2="0" stroke="#38bdf8" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="17" y1="7" x2="0" y2="7" stroke="#38bdf8" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="18" y1="9" x2="2" y2="13" stroke="#38bdf8" stroke-width="1.6" stroke-linecap="round"/>
+          <rect x="14" y="2.5" width="12" height="7" rx="2" fill="#38bdf8"/>
+          <circle cx="20" cy="6" r="2.2" fill="white" opacity="0.95"/>
+          <rect x="18" y="9.5" width="4" height="17" rx="1" fill="#38bdf8"/>
+          <rect x="7" y="26.5" width="26" height="2.5" rx="1.25" fill="#38bdf8"/>
+          <path d="M7 29 Q20 39 33 29" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M2 41 Q7 38 12 41 Q17 44 22 41 Q27 38 32 41 Q37 44 38 41" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+        </svg>
+        <span class="font-semibold text-slate-400">Lightboat</span>
+      </div>
+      <p data-i18n="footer.copy" class="text-slate-600 text-sm">© 2025 Lightboat Consulting Inc. — lightboat.ca</p>
+      <div class="flex items-center gap-5 text-sm text-slate-600">
+        <a href="mailto:hello@lightboat.ca" class="hover:text-slate-400 transition-colors">hello@lightboat.ca</a>
+        <span>Canada</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ─── Translations ────────────────────────────────────────────────────────
+    const translations = {
+      en: {
+        'nav.services': 'Services',
+        'nav.approach': 'Approach',
+        'nav.about': 'About',
+        'nav.cta': 'Get in touch',
+        'nav.cta.mobile': 'Get in touch →',
+        'hero.badge': 'Digital Transformation Consulting',
+        'hero.h1': 'Navigate your<br/><span class="text-transparent bg-clip-text" style="background-image:linear-gradient(90deg,#38bdf8,#818cf8)">digital future</span><br/>with confidence.',
+        'hero.p': 'Lightboat guides businesses through modernization — turning legacy tech debt into competitive advantage through cloud migration, automation, and data-driven operations. We stay with you every step of the way.',
+        'hero.cta1': 'Start your transformation',
+        'hero.cta2': 'See our services',
+        'hero.stat1.value': '100%',
+        'hero.stat1.label': 'Hands-on delivery',
+        'hero.stat2.value': 'End-to-end',
+        'hero.stat2.label': 'Strategy to production',
+        'hero.stat3.value': 'Built-in',
+        'hero.stat3.label': 'Team knowledge transfer',
+        'services.label': 'What we do',
+        'services.h2': 'Four pillars of transformation',
+        'services.p': "Whether you're dealing with legacy systems, manual processes, or siloed data, we have a path forward.",
+        's1.h3': 'Tech Debt & Modernization',
+        's1.p': 'We audit your existing systems, identify bottlenecks, and build a realistic roadmap to replace or refactor legacy infrastructure — without disrupting operations.',
+        's1.li1': 'Legacy system audit & risk mapping',
+        's1.li2': 'Incremental migration strategy',
+        's1.li3': 'Zero-downtime transition plans',
+        's2.h3': 'Cloud & Web Migration',
+        's2.p': 'Move from on-premise or outdated hosting to scalable, secure modern cloud services. We handle architecture design, migration execution, and team onboarding.',
+        's2.li1': 'Cloud architecture design',
+        's2.li2': 'Service selection & vendor guidance',
+        's2.li3': 'Secure deployment & monitoring setup',
+        's3.h3': 'Process Automation',
+        's3.p': 'Eliminate manual, repetitive work through targeted automation — with or without AI. We identify the highest-value opportunities and implement reliable, maintainable solutions.',
+        's3.li1': 'Workflow & pipeline automation',
+        's3.li2': 'AI-assisted process acceleration',
+        's3.li3': 'Integration between business tools',
+        's4.h3': 'Data Platforms & Analytics',
+        's4.p': 'Build a data foundation your team can actually use. From centralized data pipelines to business intelligence dashboards, we set up scalable platforms using tools your team already understands.',
+        's4.li1': 'Data pipeline & warehouse setup',
+        's4.li2': 'BI dashboards & reporting tools',
+        's4.li3': 'Business analytics enablement',
+        'approach.label': 'Our approach',
+        'approach.h2': "We don't just deliver.<br/><span class=\"text-sky-400\">We transfer.</span>",
+        'approach.p1': 'Most consultants hand over a finished system and leave. Lightboat stays alongside your team — explaining decisions, building internal knowledge, and making sure your people can own what we build together.',
+        'approach.p2': "We believe technology only creates lasting value when the people using it understand it. That's why every engagement includes structured knowledge transfer and honest education, not just a handoff document.",
+        'approach.card1.h4': 'Accompagnement réel',
+        'approach.card1.p': "We embed with your team, not just consult from a distance. Slack, stand-ups, code reviews — we're part of the process.",
+        'approach.card2.h4': 'Honest timelines',
+        'approach.card2.p': 'No surprises. We plan carefully, communicate early, and adjust together when things change.',
+        'approach.card3.h4': 'Education first',
+        'approach.card3.p': 'Every delivery includes the "why." Your team leaves with skills and confidence, not just a working system.',
+        'approach.card4.h4': 'Practical over fashionable',
+        'approach.card4.p': 'We recommend tools that fit your team, not the latest hype. Sustainable beats spectacular.',
+        'about.label': 'Who we are',
+        'about.h2': 'Built by practitioners,<br/>for real problems.',
+        'about.p1': 'Lightboat was founded on a simple observation: most digital transformation projects fail not because of technology, but because of disconnection — between consultants and clients, between leadership and teams, between tools and understanding.',
+        'about.p2': "We're a boutique Canadian consultancy that brings senior expertise to every engagement. No junior teams, no opaque processes. Just experienced practitioners who care about outcomes and work directly with your people to make lasting change.",
+        'about.v1.h4': 'Long-term thinking',
+        'about.v1.p': 'We optimize for your 3-year success, not a short-term deliverable that creates new problems.',
+        'about.v2.h4': 'People-centered',
+        'about.v2.p': "Technology serves people. We design with your team's day-to-day reality at the center of every decision.",
+        'about.v3.h4': 'Measurable impact',
+        'about.v3.p': 'Every initiative is tied to a concrete outcome. We help you define success metrics before we start, not after.',
+        'contact.label': 'Get started',
+        'contact.h2': 'Ready to move forward?',
+        'contact.p': "Tell us where you are and where you want to go. We'll set up a free discovery call to see how we can help.",
+        'form.name.label': 'Name',
+        'form.name.placeholder': 'Your name',
+        'form.email.label': 'Email',
+        'form.email.placeholder': 'you@company.com',
+        'form.company.label': 'Company / Organization',
+        'form.company.placeholder': 'Your company (optional)',
+        'form.message.label': 'What are you looking to accomplish?',
+        'form.message.placeholder': "Describe your current challenges or goals — what's slowing you down, what you want to modernize, or what you want to build...",
+        'form.interests.label': 'What are you most interested in?',
+        'form.tag.techdebt': 'Tech debt & modernization',
+        'form.tag.migration': 'Cloud migration',
+        'form.tag.automation': 'Process automation',
+        'form.tag.data': 'Data & analytics',
+        'form.submit': 'Send message',
+        'form.sending': 'Sending…',
+        'form.success': "✓ Message sent! We'll be in touch within one business day.",
+        'form.error': 'Something went wrong. Please try again or email us directly.',
+        'contact.direct': 'Prefer a direct line?',
+        'symbol.label': 'Our symbol',
+        'symbol.h2': 'The lightship',
+        'symbol.quote': '"It doesn\'t wait safely in port. It puts to sea."',
+        'symbol.p1': 'The lightship is a vessel that sails into the open sea — into fog, into storms, into the most turbulent waters — not to reach a destination itself, but to shine a light so others can find their way. It doesn\'t guide from the shore. It goes where the danger is.',
+        'symbol.p2': 'That\'s the Lightboat philosophy. We don\'t send a report and move on. We navigate the turbulence alongside you — through legacy systems, organizational change, and technical uncertainty — and stay until your team has the confidence to sail forward on their own.',
+        'symbol.v1.h4': 'Present at sea',
+        'symbol.v1.p': 'We operate where complexity is highest, not from a safe distance.',
+        'symbol.v2.h4': 'Steady through waves',
+        'symbol.v2.p': 'Turbulence is expected. We plan for it and hold course.',
+        'symbol.v3.h4': 'Light, not destination',
+        'symbol.v3.p': 'We illuminate the path. Your team is the one that sails it.',
+        'footer.copy': '© 2025 Lightboat Consulting Inc. — lightboat.ca',
+        'page.title': 'Lightboat — Digital Transformation Consulting',
+        'page.description': 'Lightboat helps companies navigate digital transformation — from legacy tech debt to modern cloud services, automation, and data platforms.',
+      },
+      fr: {
+        'nav.services': 'Services',
+        'nav.approach': 'Notre approche',
+        'nav.about': 'À propos',
+        'nav.cta': 'Nous contacter',
+        'nav.cta.mobile': 'Nous contacter →',
+        'hero.badge': 'Conseil en transformation numérique',
+        'hero.h1': 'Naviguez vers votre<br/><span class="text-transparent bg-clip-text" style="background-image:linear-gradient(90deg,#38bdf8,#818cf8)">avenir numérique</span><br/>en toute confiance.',
+        'hero.p': "Lightboat accompagne les entreprises dans leur modernisation — transformer la dette technique en avantage concurrentiel grâce à la migration infonuagique, l'automatisation et une exploitation axée sur les données. Nous restons à vos côtés à chaque étape.",
+        'hero.cta1': 'Démarrer votre transformation',
+        'hero.cta2': 'Voir nos services',
+        'hero.stat1.value': '100 %',
+        'hero.stat1.label': 'Livraison terrain',
+        'hero.stat2.value': 'De bout en bout',
+        'hero.stat2.label': "Stratégie jusqu'en production",
+        'hero.stat3.value': 'Inclus',
+        'hero.stat3.label': 'Transfert de connaissances',
+        'services.label': 'Ce que nous faisons',
+        'services.h2': 'Quatre piliers de la transformation',
+        'services.p': 'Que vous soyez aux prises avec des systèmes hérités, des processus manuels ou des données cloisonnées, nous avons une voie à suivre.',
+        's1.h3': 'Dette technique et modernisation',
+        's1.p': "Nous auditons vos systèmes existants, identifions les goulots d'étranglement et construisons une feuille de route réaliste pour remplacer ou refactoriser les infrastructures héritées — sans perturber vos opérations.",
+        's1.li1': 'Audit des systèmes hérités et cartographie des risques',
+        's1.li2': 'Stratégie de migration incrémentale',
+        's1.li3': 'Plans de transition sans interruption de service',
+        's2.h3': 'Migration infonuagique et web',
+        's2.p': "Passez d'un hébergement sur site ou obsolète à des services infonuagiques modernes, évolutifs et sécurisés. Nous gérons la conception architecturale, l'exécution de la migration et l'intégration de votre équipe.",
+        's2.li1': "Conception de l'architecture infonuagique",
+        's2.li2': 'Sélection de services et conseil aux fournisseurs',
+        's2.li3': 'Déploiement sécurisé et mise en place du monitoring',
+        's3.h3': 'Automatisation des processus',
+        's3.p': "Éliminez le travail manuel et répétitif grâce à une automatisation ciblée — avec ou sans IA. Nous identifions les opportunités à plus haute valeur et mettons en place des solutions fiables et maintenables.",
+        's3.li1': 'Automatisation des flux de travail et des pipelines',
+        's3.li2': 'Accélération des processus assistée par IA',
+        's3.li3': "Intégration entre les outils d'entreprise",
+        's4.h3': 'Plateformes de données et analytique',
+        's4.p': "Bâtissez une fondation de données que votre équipe peut vraiment utiliser. Des pipelines centralisés aux tableaux de bord décisionnels, nous mettons en place des plateformes évolutives avec des outils que votre équipe connaît déjà.",
+        's4.li1': "Mise en place de pipelines et d'entrepôts de données",
+        's4.li2': 'Tableaux de bord BI et outils de reporting',
+        's4.li3': "Activation de l'analytique d'entreprise",
+        'approach.label': 'Notre approche',
+        'approach.h2': 'Nous ne livrons pas seulement.<br/><span class="text-sky-400">Nous transférons.</span>',
+        'approach.p1': "La plupart des consultants remettent un système terminé et partent. Lightboat reste aux côtés de votre équipe — en expliquant les décisions, en bâtissant les connaissances internes et en s'assurant que vos collaborateurs peuvent s'approprier ce que nous construisons ensemble.",
+        'approach.p2': "Nous croyons que la technologie ne crée une valeur durable que lorsque les personnes qui l'utilisent la comprennent. C'est pourquoi chaque mandat inclut un transfert de connaissances structuré et une formation honnête — pas seulement un document de passation.",
+        'approach.card1.h4': 'Accompagnement réel',
+        'approach.card1.p': "Nous nous intégrons à votre équipe, pas seulement comme consultants à distance. Slack, stand-ups, revues de code — nous faisons partie du processus.",
+        'approach.card2.h4': 'Échéanciers honnêtes',
+        'approach.card2.p': 'Pas de surprises. Nous planifions soigneusement, communiquons tôt et ajustons ensemble quand les choses changent.',
+        'approach.card3.h4': "L'éducation d'abord",
+        'approach.card3.p': 'Chaque livraison inclut le « pourquoi ». Votre équipe repart avec des compétences et de la confiance, pas seulement un système fonctionnel.',
+        'approach.card4.h4': 'Pratique plutôt que tendance',
+        'approach.card4.p': "Nous recommandons des outils adaptés à votre équipe, pas les dernières tendances. Le durable l'emporte sur le spectaculaire.",
+        'about.label': 'Qui nous sommes',
+        'about.h2': 'Bâti par des praticiens,<br/>pour de vrais problèmes.',
+        'about.p1': "Lightboat a été fondé sur une observation simple : la plupart des projets de transformation numérique échouent non pas à cause de la technologie, mais à cause d'une déconnexion — entre consultants et clients, entre direction et équipes, entre outils et compréhension.",
+        'about.p2': "Nous sommes une firme-conseil canadienne de boutique qui apporte une expertise senior à chaque mandat. Pas d'équipes juniors, pas de processus opaques. Juste des praticiens expérimentés qui se soucient des résultats et travaillent directement avec vos équipes pour créer un changement durable.",
+        'about.v1.h4': 'Vision à long terme',
+        'about.v1.p': 'Nous optimisons pour votre succès à 3 ans, pas pour un livrable à court terme qui crée de nouveaux problèmes.',
+        'about.v2.h4': 'Centré sur les personnes',
+        'about.v2.p': "La technologie sert les personnes. Nous concevons avec la réalité quotidienne de votre équipe au centre de chaque décision.",
+        'about.v3.h4': 'Impact mesurable',
+        'about.v3.p': "Chaque initiative est liée à un résultat concret. Nous vous aidons à définir les indicateurs de succès avant de commencer, pas après.",
+        'contact.label': 'Commençons',
+        'contact.h2': 'Prêt à passer à l\'action ?',
+        'contact.p': "Dites-nous où vous en êtes et où vous voulez aller. Nous organiserons un appel de découverte gratuit pour voir comment nous pouvons vous aider.",
+        'form.name.label': 'Nom',
+        'form.name.placeholder': 'Votre nom',
+        'form.email.label': 'Courriel',
+        'form.email.placeholder': 'vous@entreprise.com',
+        'form.company.label': 'Entreprise / Organisation',
+        'form.company.placeholder': 'Votre entreprise (optionnel)',
+        'form.message.label': 'Qu\'espérez-vous accomplir ?',
+        'form.message.placeholder': "Décrivez vos défis ou objectifs actuels — ce qui vous ralentit, ce que vous voulez moderniser ou construire…",
+        'form.interests.label': 'Qu\'est-ce qui vous intéresse le plus ?',
+        'form.tag.techdebt': 'Dette technique',
+        'form.tag.migration': 'Migration infonuagique',
+        'form.tag.automation': 'Automatisation des processus',
+        'form.tag.data': 'Données et analytique',
+        'form.submit': 'Envoyer le message',
+        'form.sending': 'Envoi en cours…',
+        'form.success': "✓ Message envoyé ! Nous vous répondrons dans un délai d'un jour ouvrable.",
+        'form.error': "Une erreur s'est produite. Veuillez réessayer ou nous écrire directement.",
+        'contact.direct': 'Préférez un contact direct ?',
+        'symbol.label': 'Notre symbole',
+        'symbol.h2': 'Le bateau-phare',
+        'symbol.quote': "\"Il n\'attend pas à l\'abri du port. Il prend la mer.\"",
+        'symbol.p1': "Le bateau-phare est un navire qui s\'aventure en pleine mer — dans le brouillard, dans les tempêtes, dans les eaux les plus tumultueuses — non pas pour atteindre lui-même une destination, mais pour éclairer la route afin que les autres puissent trouver leur chemin. Il ne guide pas depuis le rivage. Il va là où le danger est réel.",
+        'symbol.p2': "C\'est la philosophie Lightboat. Nous ne remettons pas un rapport et nous en allons. Nous naviguons dans la turbulence à vos côtés — à travers les systèmes hérités, les changements organisationnels et les incertitudes techniques — et nous restons jusqu\'à ce que votre équipe ait la confiance de naviguer par elle-même.",
+        'symbol.v1.h4': 'Présent en mer',
+        'symbol.v1.p': 'Nous opérons là où la complexité est la plus grande, pas à distance sécuritaire.',
+        'symbol.v2.h4': 'Stable dans les vagues',
+        'symbol.v2.p': 'La turbulence est attendue. Nous la planifions et maintenons le cap.',
+        'symbol.v3.h4': 'La lumière, pas la destination',
+        'symbol.v3.p': "Nous éclairons le chemin. C\'est votre équipe qui le navigue.",
+        'footer.copy': '© 2025 Lightboat Consulting Inc. — lightboat.ca',
+        'page.title': 'Lightboat — Conseil en transformation numérique',
+        'page.description': 'Lightboat accompagne les entreprises dans leur transformation numérique — dette technique, migration infonuagique, automatisation et plateformes de données.',
+      }
+    };
+
+    // ─── i18n engine ────────────────────────────────────────────────────────
+    let currentLang = localStorage.getItem('lb_lang') || 'en';
+
+    function t(key) {
+      return translations[currentLang][key] || translations.en[key] || key;
+    }
+
+    function applyLang() {
+      document.documentElement.lang = currentLang;
+      document.title = t('page.title');
+      document.querySelector('meta[name="description"]').setAttribute('content', t('page.description'));
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        el.textContent = t(el.dataset.i18n);
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        el.innerHTML = t(el.dataset.i18nHtml);
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        el.placeholder = t(el.dataset.i18nPlaceholder);
+      });
+
+      // Toggle button active states — desktop + mobile
+      ['en', 'fr'].forEach(lang => {
+        const btnD = document.getElementById('lang-' + lang + '-btn');
+        const btnM = document.getElementById('lang-' + lang + '-mob');
+        if (btnD) btnD.classList.toggle('active', lang === currentLang);
+        if (btnM) btnM.classList.toggle('active', lang === currentLang);
+      });
+    }
+
+    function setLang(lang) {
+      if (lang === currentLang) return;
+      currentLang = lang;
+      localStorage.setItem('lb_lang', lang);
+      applyLang();
+    }
+
+    // ─── Navbar scroll ───────────────────────────────────────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) {
+        navbar.style.background = 'rgba(15,23,42,0.95)';
+        navbar.style.backdropFilter = 'blur(12px)';
+        navbar.style.borderBottom = '1px solid rgba(255,255,255,0.07)';
+        navbar.style.boxShadow = '0 4px 24px rgba(0,0,0,0.3)';
+      } else {
+        navbar.style.background = 'transparent';
+        navbar.style.backdropFilter = '';
+        navbar.style.borderBottom = '';
+        navbar.style.boxShadow = '';
+      }
+    });
+
+    // ─── Mobile menu ─────────────────────────────────────────────────────────
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+    // ─── Scroll animations ───────────────────────────────────────────────────
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.observe').forEach(el => observer.observe(el));
+
+    // ─── Interest tag checkboxes ─────────────────────────────────────────────
+    document.querySelectorAll('.interest-tag input[type=checkbox]').forEach(cb => {
+      cb.addEventListener('change', function () {
+        const span = this.nextElementSibling;
+        if (this.checked) {
+          span.style.borderColor = '#38bdf8';
+          span.style.color = '#38bdf8';
+          span.style.backgroundColor = 'rgba(56,189,248,0.1)';
+        } else {
+          span.style.borderColor = '';
+          span.style.color = '';
+          span.style.backgroundColor = '';
+        }
+      });
+    });
+
+    // ─── Form submit ─────────────────────────────────────────────────────────
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('contact-form');
+      const btn = document.getElementById('submit-btn');
+      const successEl = document.getElementById('form-success');
+      const errorEl = document.getElementById('form-error');
+      const btnLabel = btn.querySelector('[data-i18n]');
+
+      // Reset error state
+      errorEl.classList.add('hidden');
+      btnLabel.textContent = t('form.sending');
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+
+      // Collect form data; merge multiple checkboxes into one field
+      const data = new FormData(form);
+      const interests = [...form.querySelectorAll('input[name="interest"]:checked')]
+        .map(cb => cb.value);
+      data.delete('interest');
+      if (interests.length) data.append('interest', interests.join(', '));
+
+      try {
+        const res = await fetch('https://formspree.io/f/damien.size@lightboat.ca', {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          btn.style.display = 'none';
+          successEl.classList.remove('hidden');
+        } else {
+          throw new Error('non-ok response');
+        }
+      } catch {
+        btnLabel.textContent = t('form.submit');
+        btn.disabled = false;
+        btn.style.opacity = '';
+        errorEl.querySelector('[data-i18n]').textContent = t('form.error');
+        errorEl.classList.remove('hidden');
+      }
+    }
+
+    // ─── Init ────────────────────────────────────────────────────────────────
+    applyLang();
+  </script>
+</body>
+</html>
