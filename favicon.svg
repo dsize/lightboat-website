@@ -1,6 +1,22 @@
-<svg viewBox="0 0 34 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <line x1="14" y1="4" x2="1"  y2="4" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round"/>
-  <line x1="20" y1="4" x2="33" y2="4" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round"/>
-  <line x1="17" y1="1" x2="17" y2="18" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round"/>
-  <path d="M5 18 Q17 27 29 18" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+<svg viewBox="0 0 50 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Rayons gauche -->
+  <line x1="23" y1="5" x2="5"  y2="0"  stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="22" y1="5" x2="1"  y2="5"  stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="22" y1="6" x2="2"  y2="12" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="23" y1="7" x2="7"  y2="16" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Rayons droite -->
+  <line x1="27" y1="5" x2="45" y2="0"  stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="28" y1="5" x2="49" y2="5"  stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="28" y1="6" x2="48" y2="12" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="27" y1="7" x2="43" y2="16" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Chapeau lanterne -->
+  <rect x="20" y="1" width="10" height="5" rx="1" stroke="#38bdf8" stroke-width="1.5" fill="none"/>
+  <!-- Tour phare -->
+  <path d="M22 6 L21 22 L29 22 L28 6 Z" stroke="#38bdf8" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+  <!-- Pont -->
+  <line x1="7" y1="22" x2="43" y2="22" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Coque -->
+  <path d="M7 22 Q25 33 43 22" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  <!-- Vagues -->
+  <path d="M3 38 Q8 35 13 38 Q18 41 23 38 Q28 35 33 38 Q38 41 43 38 Q47 35 49 37" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/>
 </svg>
