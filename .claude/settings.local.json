@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "Bash(curl *)",
+      "Bash(gh --version)",
+      "Bash(ssh-keygen -t ed25519 -C \"damien.size@lightboat.ca\" -f ~/.ssh/id_ed25519 -N \"\")",
+      "Bash(ssh -T git@github.com)",
+      "Bash(ssh-keyscan github.com)",
+      "Bash(git add *)",
+      "Bash(git commit *)"
+    ]
+  }
+}
