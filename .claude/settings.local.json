@@ -11,7 +11,9 @@
       "Bash(git add *)",
       "Bash(git commit *)",
       "Bash(convert /home/damien/lightboat-website/ressource/ceo.JPG -resize 600x600^ -gravity center -extent 600x600 -quality 82 /home/damien/lightboat-website/ressource/ceo.jpg)",
-      "Bash(python3 *)"
+      "Bash(python3 *)",
+      "Bash(cp \"/root/.claude/uploads/41c9d707-502e-5c39-8ca5-891a68acb5c3/1c724182-IMG_8544.png\" /home/user/lightboat-website/ressource/logo-source.png)",
+      "Bash(command -v convert)"
     ]
   }
 }
